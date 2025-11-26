@@ -1,71 +1,45 @@
-let amigos = [];
+let array = []
 
-function adicionar() {
-   
-   let amigo = document.getElementById('nome-amigo');
+let item1 = prompt('adicione um item a lista');
+let item2 = prompt('adicione mais um item a lista');
 
-
-   if(amigo.value == '') {
-    alert ('coloque um nome')
-    return;
-   }
-
-   if (amigos.includes(amigos.value)) {
-    alert('nome ja adicionado')
-    return;
-   }
-
-   let lista = document.getElementById('lista-amigos');
-
-
-   amigos.push(amigo.value)
-
-
-   if (lista.textContent == '') {
-    lista.textContent = amigo.value;
-   } else {
-    lista.textContent =  lista.textContent + ', ' + amigo.value;
-   }
-
-
-   amigo.value = ''
-
-
+while (verificarArray(item1)) {
+    item1 = prompt('erro, ja existe esse item na lista');
 }
 
-function sortear() {
+while (verificarArray(item2) || item2 === item1) {
+    item2 = prompt('erro, ja existe esse item na lista');
+}
 
-  if (amigos.length < 4) {
-    alert('pelo menos 4 amigos')
-    return;
+array.push(item1, item2)
+
+prompt(array)
+
+function verificarArray(item) {
+  if (array.includes(item)) {
+    alert('o item ja esta na lista, digite outro')
+       return true;
   }
-  embaralha(amigos);
-  let sorteio = document.getElementById('lista-sorteio');
-
-  for (let i = 0; i < amigos.length; i++) {
-    if (i == amigos.length - 1) {
-        sorteio.innerHTML = sorteio.innerHTML + amigos[i] + '-->' + amigos[0] + '<br>'
-    } else {
-        sorteio.innerHTML = sorteio.innerHTML + amigos[i] + '-->' + amigos[i + 1] + '<br>'
-    }
+       return false;
     
-  }
 }
 
-function reiniciar() {
-  amigos + [];
-  document.getElementById('lista-amigos').innerHTML = '';
-  document.getElementById('lista-sorteio').innerHTML = '';
+while (verificarString(numero1) || verificarString(numero2)) {
+    numero1 = prompt('digite um numero para uma media');
+    numero2 = prompt('digite outro numero para a media');
 }
 
-function embaralha(lista) {
+let media = calcularMedia(numero1, numero2)
+alert(media)
 
-    for (let indice = lista.length; indice; indice--) {
+function calcularMedia(num1, num2) {
+   return (num1 + num2) /2;
+}
 
-        const indiceAleatorio = Math.floor(Math.random() * indice);
-
-        // atribuição via destructuring
-        [lista[indice - 1], lista[indiceAleatorio]] = 
-            [lista[indiceAleatorio], lista[indice - 1]];
+   
+function verificarString(valor) {
+    if (valor === '' || valor === null || isNaN(valor)) {
+        alert('Escreva algo válido!');
+        return true;
     }
 }
