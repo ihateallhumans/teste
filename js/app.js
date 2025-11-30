@@ -10,7 +10,9 @@ function numerosos(numero) {
     } else if (numero === 0) {
         return alert("Zero");
     } else {
+
       alert("digite somente numeros");
+
       let novoNumero = Number(prompt('numero'));
       return numerosos(novoNumero);
     }
